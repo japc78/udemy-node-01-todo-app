@@ -6,7 +6,17 @@ console.clear();
 
 const main = async() => {
     console.log('Hi!, This is the way!');
-    showMenu();
+
+    let opt = '';
+
+    do {
+        // await, espera hasta que se resuelva la promesa del menu
+        opt = await showMenu();
+
+        if (opt !== '0') await pause();
+
+    } while (opt !== '0');
+
     // pause();
 }
 
