@@ -2,21 +2,21 @@ require('colors');
 
 const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
 const { saveData, loadData } = require('./helpers/serviceDB');
-const ListTasks = require('./models/listTasks');
+const Tasks = require('./models/tasks');
 
 console.clear();
 
 const main = async() => {
 
     let opt = '';
-    const listTasks = new ListTasks();
+    const tasks = new Tasks();
 
     const listTaskDB = loadData();
     await pause();
 
 
     if (listTaskDB) {
-        console.log(listTaskDB);
+
     }
 
     do {
@@ -26,14 +26,14 @@ const main = async() => {
         switch (opt) {
             case '1':
                 const desc = await readInput('Write your description task: ');
-                listTasks.makeTask(desc);
+                tasks.makeTask(desc);
                 break;
             case '2':
-                console.log(listTasks.getListTask);
+                console.log(tasks.getList);
                 break;
         }
 
-        // saveData(listTasks.getListTask);
+        // saveData(tasks.getList);
 
         await pause();
     } while (opt !== '0');

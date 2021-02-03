@@ -9,13 +9,13 @@ const saveData = ( data ) => {
 const loadData = () => {
 
     if (!fs.existsSync(file)) {
-        console.log('pasa 2');
+        console.log('File no exist');
         return null
     }
 
     let data = fs.readFileSync(file, { encoding: 'utf-8'});
     data = JSON.parse(data);
-    // console.log(data);
+    console.log(data);
 
     return null;
 }

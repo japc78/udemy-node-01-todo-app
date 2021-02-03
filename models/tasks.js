@@ -1,18 +1,14 @@
 const Task = require('./task');
 
-class ListTasks {
+class Tasks {
     _list = {};
 
     constructor() {
         this._list = {};
     }
 
-    makeTask(desc = '') {
-        const task = new Task(desc);
-        this._list[task.id] = task;
-    }
 
-    get getListTask() {
+    get getList() {
         const list = [];
 
         // Object.keys nos permite retornar un [] con todas las key que tenga ese objeto
@@ -24,6 +20,11 @@ class ListTasks {
 
         return list;
     }
+
+    makeTask(desc = '') {
+        const task = new Task(desc);
+        this._list[task.id] = task;
+    }
 }
 
-module.exports = ListTasks;
+module.exports = Tasks;
