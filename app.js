@@ -1,6 +1,7 @@
 require('colors');
 
 const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
+const { saveData, loadData } = require('./helpers/serviceDB');
 const ListTasks = require('./models/listTasks');
 
 console.clear();
@@ -9,6 +10,14 @@ const main = async() => {
 
     let opt = '';
     const listTasks = new ListTasks();
+
+    const listTaskDB = loadData();
+    await pause();
+
+
+    if (listTaskDB) {
+        console.log(listTaskDB);
+    }
 
     do {
         opt = await inquirerMenu();
@@ -22,9 +31,9 @@ const main = async() => {
             case '2':
                 console.log(listTasks.getListTask);
                 break;
-
         }
 
+        // saveData(listTasks.getListTask);
 
         await pause();
     } while (opt !== '0');
