@@ -20,7 +20,7 @@ const main = async() => {
                 listTasks.makeTask(desc);
                 break;
             case '2':
-                console.log(listTasks._list);
+                console.log(listTasks.getListTask);
                 break;
 
         }
