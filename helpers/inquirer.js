@@ -9,31 +9,31 @@ const menuOpts = [
         choices: [
             {
                 value: '1',
-                name: '1. Make a task'
+                name: `${'1'.green}. Make a task`
             },
             {
                 value: '2',
-                name: '2. Lists all tasks'
+                name: `${'2'.green}. Lists all tasks`
             },
             {
                 value: '3',
-                name: '3. Lists all complete tasks'
+                name: `${'3'.green}. Lists all complete tasks`
             },
             {
                 value: '4',
-                name: '4. Lists all unfinished tasks'
+                name: `${'4'.green}. Lists all unfinished tasks`
             },
             {
                 value: '5',
-                name: '5. Complete task(s)'
+                name: `${'5'.green}. Complete task(s)`
             },
             {
                 value: '6',
-                name: '6. Delete a task'
+                name: `${'6'.green}. Delete a task`
             },
             {
                 value: '0',
-                name: '0. Exit'
+                name: `${'0'.green}. Exit`
             },
         ]
     }
@@ -42,7 +42,7 @@ const menuOpts = [
 const inquirerMenu = async() => {
     console.clear();
     console.log('==================================='.green);
-    console.log('====== Seleccione una opción ======'.green);
+    console.log('====== Seleccione una opción ======'.white);
     console.log('===================================\n'.green);
 
     // const opt = await inquirer.prompt(menuOpts);
