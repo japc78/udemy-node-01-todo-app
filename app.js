@@ -12,11 +12,10 @@ const main = async() => {
     const tasks = new Tasks();
 
     const listTaskDB = loadData();
-    await pause();
-
+    // await pause();
 
     if (listTaskDB) {
-
+        tasks.loadTaskFromArray(listTaskDB);
     }
 
     do {
@@ -33,7 +32,7 @@ const main = async() => {
                 break;
         }
 
-        // saveData(tasks.getList);
+        saveData(tasks.getList);
 
         await pause();
     } while (opt !== '0');

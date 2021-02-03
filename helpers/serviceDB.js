@@ -15,9 +15,8 @@ const loadData = () => {
 
     let data = fs.readFileSync(file, { encoding: 'utf-8'});
     data = JSON.parse(data);
-    console.log(data);
-
-    return null;
+    // console.log(data);
+    return data;
 }
 
 module.exports = {
