@@ -28,12 +28,20 @@ class Tasks {
         // console.log(this._list);
     }
 
-    showList() {
-        this.getList.forEach( (task, i) => {
+    showList(list = []) {
+        list.forEach( (task, i) => {
             const idx = `${i + 1}.`.green;
             const status = (task.completeDate !== null) ? 'Complete'.green : 'Pending'.red;
             console.log(`${idx} ${task.desc} :: ${status}`);
         })
+    }
+
+    showListFilterComplete( isComplete = true  ) {
+        const list = (isComplete)
+            ? this.getList.filter( task => task.completeDate )
+            : this.getList.filter( task => task.completeDate === null);
+
+        this.showList(list);
     }
 
     makeTask(desc = '') {

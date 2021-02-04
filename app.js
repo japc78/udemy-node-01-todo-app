@@ -28,7 +28,13 @@ const main = async() => {
                 tasks.makeTask(desc);
                 break;
             case '2':
-                tasks.showList();
+                tasks.showList(tasks.getList);
+                break;
+            case '3':
+                tasks.showListFilterComplete();
+                break;
+            case '4':
+                tasks.showListFilterComplete(false);
                 break;
         }
 
