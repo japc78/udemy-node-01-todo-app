@@ -46,8 +46,19 @@ class Tasks {
         const list = (isComplete)
             ? this.getList.filter( task => task.completeDate )
             : this.getList.filter( task => task.completeDate === null);
-
         this.showList(list);
+    }
+
+    doTaskComplete(list = []) {
+        list.forEach(id => {
+            this._list[id].completeDate = new Date().toISOString();
+        })
+
+        this.getList.forEach(task => {
+            if(!list.includes(task.id)) {
+                this._list[task.id].completeDate = null;
+            }
+        })
     }
 
     makeTask(desc = '') {

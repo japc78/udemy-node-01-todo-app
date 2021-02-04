@@ -83,6 +83,11 @@ const readInput = async(message) => {
     return desc;
 }
 
+const cancelOption = {
+    value: '0',
+    name: '0. '.green + 'Cancel'
+}
+
 const listTasksToDelete = async(tasks = []) => {
     const choices = tasks.map((task, i) => {
         const idx = `${i + 1}.`.green;
@@ -92,10 +97,7 @@ const listTasksToDelete = async(tasks = []) => {
         }
     });
 
-    choices.unshift({
-        value: '0',
-        name: '0. '.green + 'Cancel'
-    })
+    choices.unshift(cancelOption);
 
     const question = [{
         type: 'list',
@@ -106,6 +108,30 @@ const listTasksToDelete = async(tasks = []) => {
 
     const { id } = await inquirer.prompt(question);
     return id;
+}
+
+
+const showCheckList = async(tasks = []) => {
+    const choices = tasks.map((task, i) => {
+        const idx = `${i + 1}.`.green;
+        return {
+            value: task.id,
+            name: `${idx} ${task.desc}`,
+            checked: (task.completeDate) ? true : false
+        }
+    });
+
+    choices.unshift(cancelOption);
+
+    const question = [{
+        type: 'checkbox',
+        name: 'ids',
+        message: 'Select tasks',
+        choices
+    }]
+
+    const { ids } = await inquirer.prompt(question);
+    return ids;
 }
 
 
@@ -125,6 +151,7 @@ module.exports = {
     pause,
     readInput,
     listTasksToDelete,
-    confirmAction
+    confirmAction,
+    showCheckList
 }
 
