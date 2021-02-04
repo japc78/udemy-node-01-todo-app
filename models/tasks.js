@@ -31,7 +31,8 @@ class Tasks {
     showList() {
         this.getList.forEach( (task, i) => {
             const idx = `${i + 1}.`.green;
-            console.log(`${idx} ${task.desc} :: ${(task.completeDate !== null) ? 'Complete'.green : 'Pending'.red }`);
+            const status = (task.completeDate !== null) ? 'Complete'.green : 'Pending'.red;
+            console.log(`${idx} ${task.desc} :: ${status}`);
         })
     }
 
