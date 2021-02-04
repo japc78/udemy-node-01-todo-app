@@ -1,12 +1,8 @@
 require('colors');
 
-<<<<<<< HEAD
-const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
+const { inquirerMenu, pause, readInput, listTasksToDelete } = require('./helpers/inquirer');
 const { saveData, loadData } = require('./helpers/serviceDB');
 const Tasks = require('./models/tasks');
-=======
-const { inquirerMenu, pause } = require('./helpers/inquirer');
->>>>>>> 838954e573a82b1dda2d3569da8440e4d092c41f
 
 console.clear();
 
@@ -39,6 +35,10 @@ const main = async() => {
                 break;
             case '4':
                 tasks.showListFilterComplete(false);
+                break;
+            case '6':
+                const id = await listTasksToDelete(tasks.getList);
+                console.log(id);
                 break;
         }
 
